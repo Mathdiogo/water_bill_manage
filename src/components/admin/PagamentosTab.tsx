@@ -245,53 +245,53 @@ export function PagamentosTab() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center flex-wrap gap-3">
-        <h2 className="text-2xl font-bold text-gray-900">Controle de Pagamentos</h2>
-        <div className="flex items-center space-x-3">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Controle de Pagamentos</h2>
+        <div className="flex items-center space-x-2 sm:space-x-3 w-full sm:w-auto">
           <button
             onClick={limparEnviosWhatsApp}
             disabled={loading || !selectedPeriodo || enviadosWhatsApp.size === 0}
-            className="flex items-center space-x-2 bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center justify-center space-x-1.5 sm:space-x-2 bg-gray-600 hover:bg-gray-700 text-white px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-xs sm:text-sm flex-1 sm:flex-initial"
             title="Limpar marcações de WhatsApp enviado"
           >
-            <RefreshCw className="w-4 h-4" />
+            <RefreshCw className="w-3 h-3 sm:w-4 sm:h-4" />
             <span className="hidden sm:inline">Limpar Envios</span>
             <span className="sm:hidden">Limpar</span>
           </button>
           <button
             onClick={handleRefresh}
             disabled={loading}
-            className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center justify-center space-x-1.5 sm:space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-xs sm:text-sm flex-1 sm:flex-initial"
           >
-            <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+            <RefreshCw className={`w-3 h-3 sm:w-4 sm:h-4 ${loading ? 'animate-spin' : ''}`} />
             <span>Atualizar</span>
           </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <div className="text-sm text-blue-600 font-medium">Período Selecionado</div>
-          <div className="text-2xl font-bold text-blue-900 mt-1">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 sm:p-4">
+          <div className="text-[10px] sm:text-sm text-blue-600 font-medium">Período</div>
+          <div className="text-lg sm:text-2xl font-bold text-blue-900 mt-1">
             {periodo ? `${meses[periodo.mes - 1]} ${periodo.ano}` : '-'}
           </div>
         </div>
-        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-          <div className="text-sm text-green-600 font-medium">✓ Aprovados</div>
-          <div className="text-2xl font-bold text-green-900 mt-1">
+        <div className="bg-green-50 border border-green-200 rounded-lg p-3 sm:p-4">
+          <div className="text-[10px] sm:text-sm text-green-600 font-medium">✓ Aprovados</div>
+          <div className="text-lg sm:text-2xl font-bold text-green-900 mt-1">
             R$ {totalAprovado.toFixed(2)}
           </div>
         </div>
-        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-          <div className="text-sm text-yellow-600 font-medium">⏳ Pendentes</div>
-          <div className="text-2xl font-bold text-yellow-900 mt-1">
+        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 sm:p-4">
+          <div className="text-[10px] sm:text-sm text-yellow-600 font-medium">⏳ Pendentes</div>
+          <div className="text-lg sm:text-2xl font-bold text-yellow-900 mt-1">
             R$ {totalPendente.toFixed(2)}
           </div>
         </div>
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <div className="text-sm text-red-600 font-medium">✗ Não Pagos</div>
-          <div className="text-2xl font-bold text-red-900 mt-1">
+        <div className="bg-red-50 border border-red-200 rounded-lg p-3 sm:p-4">
+          <div className="text-[10px] sm:text-sm text-red-600 font-medium">✗ Não Pagos</div>
+          <div className="text-lg sm:text-2xl font-bold text-red-900 mt-1">
             R$ {totalSemPagamento.toFixed(2)}
           </div>
         </div>
@@ -302,7 +302,7 @@ export function PagamentosTab() {
           <button
             key={p.id}
             onClick={() => setSelectedPeriodo(p.id)}
-            className={`px-4 py-2 rounded-lg whitespace-nowrap transition-colors ${
+            className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg whitespace-nowrap transition-colors text-xs sm:text-sm ${
               selectedPeriodo === p.id
                 ? 'bg-blue-600 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -314,106 +314,111 @@ export function PagamentosTab() {
       </div>
 
       <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                Chácara
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                Morador
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                Consumo (m³)
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                Valor
-              </th>
-              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">
-                Status
-              </th>
-              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">
-                Ações
-              </th>
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+        <div className="overflow-x-auto">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-3 sm:px-6 py-2 sm:py-3 text-left text-[10px] sm:text-xs font-medium text-gray-500 uppercase whitespace-nowrap">
+                  Chácara
+                </th>
+                <th className="px-3 sm:px-6 py-2 sm:py-3 text-left text-[10px] sm:text-xs font-medium text-gray-500 uppercase whitespace-nowrap">
+                  Morador
+                </th>
+                <th className="px-3 sm:px-6 py-2 sm:py-3 text-left text-[10px] sm:text-xs font-medium text-gray-500 uppercase whitespace-nowrap">
+                  Consumo
+                </th>
+                <th className="px-3 sm:px-6 py-2 sm:py-3 text-left text-[10px] sm:text-xs font-medium text-gray-500 uppercase whitespace-nowrap">
+                  Valor
+                </th>
+                <th className="px-3 sm:px-6 py-2 sm:py-3 text-center text-[10px] sm:text-xs font-medium text-gray-500 uppercase whitespace-nowrap">
+                  Status
+                </th>
+                <th className="px-3 sm:px-6 py-2 sm:py-3 text-center text-[10px] sm:text-xs font-medium text-gray-500 uppercase whitespace-nowrap">
+                  Ações
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
             {consumos.map((consumo) => {
               const pagamento = consumo.pagamentos[0];
               const status = (pagamento?.status || 'sem_pagamento') as 'sem_pagamento' | 'pendente' | 'aprovado' | 'rejeitado';
               
               return (
               <tr key={consumo.id} className="hover:bg-gray-50">
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">
+                <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
+                  <div className="text-xs sm:text-sm font-medium text-gray-900">
                     Chácara {consumo.morador?.numero_chacara}
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">{consumo.morador?.nome}</div>
+                <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
+                  <div className="text-xs sm:text-sm text-gray-900">{consumo.morador?.nome}</div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">{consumo.consumo_m3.toFixed(2)}</div>
+                <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
+                  <div className="text-xs sm:text-sm text-gray-900">{consumo.consumo_m3.toFixed(2)} m³</div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">
+                <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
+                  <div className="text-xs sm:text-sm font-medium text-gray-900">
                     R$ {consumo.valor_calculado.toFixed(2)}
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-center">
+                <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-center">
                   {status === 'aprovado' ? (
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                      <CheckCircle className="w-4 h-4 mr-1" />
-                      Aprovado
+                    <span className="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium bg-green-100 text-green-800">
+                      <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                      <span className="hidden sm:inline">Aprovado</span>
+                      <span className="sm:hidden">✓</span>
                     </span>
                   ) : status === 'pendente' ? (
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                      <Clock className="w-4 h-4 mr-1" />
-                      Pendente
+                    <span className="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium bg-yellow-100 text-yellow-800">
+                      <Clock className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                      <span className="hidden sm:inline">Pendente</span>
+                      <span className="sm:hidden">⏳</span>
                     </span>
                   ) : status === 'rejeitado' ? (
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                      <XCircle className="w-4 h-4 mr-1" />
-                      Rejeitado
+                    <span className="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium bg-red-100 text-red-800">
+                      <XCircle className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                      <span className="hidden sm:inline">Rejeitado</span>
+                      <span className="sm:hidden">✗</span>
                     </span>
                   ) : (
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
-                      <XCircle className="w-4 h-4 mr-1" />
-                      Não Pago
+                    <span className="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium bg-gray-100 text-gray-800">
+                      <XCircle className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                      <span className="hidden sm:inline">Não Pago</span>
+                      <span className="sm:hidden">-</span>
                     </span>
                   )}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-center">
-                  <div className="flex items-center justify-center space-x-2">
+                <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-center">
+                  <div className="flex flex-col sm:flex-row items-center justify-center space-y-1 sm:space-y-0 sm:space-x-2">
                     {status === 'pendente' && (
                       <>
                         <button
                           onClick={() => handleApprovePayment(pagamento.id)}
-                          className="inline-flex items-center px-3 py-1 bg-green-600 hover:bg-green-700 text-white text-xs font-medium rounded transition-colors"
+                          className="inline-flex items-center px-2 sm:px-3 py-1 bg-green-600 hover:bg-green-700 text-white text-[10px] sm:text-xs font-medium rounded transition-colors w-full sm:w-auto justify-center"
                           title="Aprovar pagamento"
                         >
-                          <Check className="w-4 h-4 mr-1" />
-                          Aprovar
+                          <Check className="w-3 h-3 sm:w-4 sm:h-4 sm:mr-1" />
+                          <span className="hidden sm:inline">Aprovar</span>
                         </button>
                         <button
                           onClick={() => handleRejectPayment(pagamento.id)}
-                          className="inline-flex items-center px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-xs font-medium rounded transition-colors"
+                          className="inline-flex items-center px-2 sm:px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-[10px] sm:text-xs font-medium rounded transition-colors w-full sm:w-auto justify-center"
                           title="Rejeitar pagamento"
                         >
-                          <X className="w-4 h-4 mr-1" />
-                          Rejeitar
+                          <X className="w-3 h-3 sm:w-4 sm:h-4 sm:mr-1" />
+                          <span className="hidden sm:inline">Rejeitar</span>
                         </button>
                       </>
                     )}
                     {status === 'aprovado' && (
-                      <span className="text-xs text-gray-500">
+                      <span className="text-[10px] sm:text-xs text-gray-500">
                         {new Date(pagamento.data_pagamento).toLocaleDateString('pt-BR')}
                       </span>
                     )}
                     {(status === 'sem_pagamento' || status === 'rejeitado') && consumo.morador?.telefone && (
                       <button
                         onClick={() => handleEnviarWhatsAppMorador(consumo)}
-                        className={`inline-flex items-center px-3 py-1 text-xs font-medium rounded transition-colors ${
+                        className={`inline-flex items-center px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-medium rounded transition-colors w-full sm:w-auto justify-center ${
                           enviadosWhatsApp.has(consumo.morador?.id || '')
                             ? 'bg-green-100 text-green-700 hover:bg-green-200'
                             : 'bg-blue-600 text-white hover:bg-blue-700'
@@ -426,19 +431,20 @@ export function PagamentosTab() {
                       >
                         {enviadosWhatsApp.has(consumo.morador?.id || '') ? (
                           <>
-                            <CheckCheck className="w-4 h-4 mr-1" />
-                            Enviado
+                            <CheckCheck className="w-3 h-3 sm:w-4 sm:h-4 sm:mr-1" />
+                            <span className="hidden sm:inline">Enviado</span>
                           </>
                         ) : (
                           <>
-                            <MessageCircle className="w-4 h-4 mr-1" />
-                            WhatsApp
+                            <MessageCircle className="w-3 h-3 sm:w-4 sm:h-4 sm:mr-1" />
+                            <span className="hidden sm:inline">WhatsApp</span>
+                            <span className="sm:hidden">Msg</span>
                           </>
                         )}
                       </button>
                     )}
                     {(status === 'sem_pagamento' || status === 'rejeitado') && !consumo.morador?.telefone && (
-                      <span className="text-xs text-gray-400 italic">Sem telefone</span>
+                      <span className="text-[10px] sm:text-xs text-gray-400 italic">Sem tel.</span>
                     )}
                   </div>
                 </td>
@@ -446,8 +452,9 @@ export function PagamentosTab() {
             )})}
           </tbody>
         </table>
+        </div>
         {consumos.length === 0 && (
-          <div className="text-center py-12 text-gray-500">
+          <div className="text-center py-12 text-sm sm:text-base text-gray-500">
             Nenhum consumo registrado para este período
           </div>
         )}

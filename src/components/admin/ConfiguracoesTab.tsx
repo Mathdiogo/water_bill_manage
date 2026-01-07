@@ -173,23 +173,23 @@ export function ConfiguracoesTab() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center space-x-3 mb-6">
-        <Settings className="w-8 h-8 text-blue-600" />
-        <h2 className="text-2xl font-bold text-gray-900">Configurações do Sistema</h2>
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex items-center space-x-2 sm:space-x-3 mb-4 sm:mb-6">
+        <Settings className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600" />
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Configurações do Sistema</h2>
       </div>
 
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-        <p className="text-sm text-blue-900">
+      <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
+        <p className="text-xs sm:text-sm text-blue-900">
           💡 <strong>Dica:</strong> A chave PIX configurada aqui será usada automaticamente em todos os pagamentos. 
           O telefone de contato é opcional e pode ser usado para identificação da associação.
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-sm p-6 space-y-6">
+      <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-sm p-4 sm:p-6 space-y-4 sm:space-y-6">
         {/* Nome da Associação */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
             Nome da Associação *
           </label>
           <input
@@ -197,7 +197,7 @@ export function ConfiguracoesTab() {
             value={formData.nome_associacao}
             onChange={(e) => setFormData({ ...formData, nome_associacao: e.target.value })}
             placeholder="Ex: AMCRS - Associação de Moradores"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             required
           />
           <p className="text-xs text-gray-500 mt-1">
@@ -207,7 +207,7 @@ export function ConfiguracoesTab() {
 
         {/* Chave PIX */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
             Chave PIX da Associação *
           </label>
           <input
@@ -215,17 +215,17 @@ export function ConfiguracoesTab() {
             value={formData.chave_pix}
             onChange={(e) => setFormData({ ...formData, chave_pix: e.target.value })}
             placeholder="email@exemplo.com ou CPF/CNPJ"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono"
+            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono"
             required
           />
-          <p className="text-xs text-gray-500 mt-1">
+          <p className="text-[10px] sm:text-xs text-gray-500 mt-1">
             Esta chave será usada para todos os pagamentos via PIX
           </p>
         </div>
 
         {/* Telefone de Contato */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
             Telefone de Contato (Opcional)
           </label>
           <input
@@ -233,9 +233,9 @@ export function ConfiguracoesTab() {
             value={formData.telefone_contato}
             onChange={(e) => handlePhoneChange(e.target.value)}
             placeholder="+55 (00) 00000-0000"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
-          <p className="text-xs text-gray-500 mt-1">
+          <p className="text-[10px] sm:text-xs text-gray-500 mt-1">
             Formato: +55 (DDD) XXXXX-XXXX - Digite apenas os números
           </p>
         </div>
@@ -527,16 +527,16 @@ export function ConfiguracoesTab() {
           <button
             type="submit"
             disabled={saving}
-            className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full sm:w-auto flex items-center justify-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
           >
             {saving ? (
               <>
-                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                 <span>Salvando...</span>
               </>
             ) : (
               <>
-                <Save className="w-5 h-5" />
+                <Save className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span>Salvar Configurações</span>
               </>
             )}

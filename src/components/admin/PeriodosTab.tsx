@@ -229,32 +229,32 @@ export function PeriodosTab() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold text-gray-900">Gestão de Períodos e Consumo</h2>
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-3 sm:space-y-0">
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Períodos e Consumo</h2>
         <button
           onClick={() => setShowForm(!showForm)}
-          className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
+          className="w-full sm:w-auto flex items-center justify-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm sm:text-base"
         >
-          <Plus className="w-5 h-5" />
+          <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
           <span>Novo Período</span>
         </button>
       </div>
 
       {showForm && (
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h3 className="text-lg font-semibold mb-4">Criar Novo Período - Informe as Despesas</h3>
-          <p className="text-sm text-gray-600 mb-6">
+        <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6">
+          <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Criar Novo Período - Informe as Despesas</h3>
+          <p className="text-xs sm:text-sm text-gray-600 mb-4 sm:mb-6">
             💡 O valor total será calculado automaticamente somando todas as despesas abaixo
           </p>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Mês *</label>
+                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Mês *</label>
                 <select
                   value={formData.mes}
                   onChange={(e) => setFormData({ ...formData, mes: parseInt(e.target.value) })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2.5 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                   required
                 >
                   {meses.map((mes, idx) => (
@@ -263,26 +263,26 @@ export function PeriodosTab() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Ano *</label>
+                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Ano *</label>
                 <input
                   type="number"
                   value={formData.ano}
                   onChange={(e) => setFormData({ ...formData, ano: parseInt(e.target.value) })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2.5 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                   required
                 />
               </div>
             </div>
 
-            <div className="border-t pt-4">
-              <h4 className="font-semibold text-gray-800 mb-4 flex items-center">
-                <span className="w-7 h-7 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm mr-2">💰</span>
+            <div className="border-t pt-3 sm:pt-4">
+              <h4 className="font-semibold text-sm sm:text-base text-gray-800 mb-3 sm:mb-4 flex items-center">
+                <span className="w-6 h-6 sm:w-7 sm:h-7 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs sm:text-sm mr-2">💰</span>
                 Despesas do Período
               </h4>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
                     Energia (R$)
                   </label>
                   <input
@@ -291,13 +291,13 @@ export function PeriodosTab() {
                     min="0"
                     value={formData.despesa_energia}
                     onChange={(e) => setFormData({ ...formData, despesa_energia: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2.5 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                     placeholder="0.00"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
                     Outros (R$)
                   </label>
                   <input
@@ -306,13 +306,13 @@ export function PeriodosTab() {
                     min="0"
                     value={formData.despesa_outros}
                     onChange={(e) => setFormData({ ...formData, despesa_outros: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2.5 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                     placeholder="0.00"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
                     Serviço de Cobrança (R$)
                   </label>
                   <input
@@ -321,13 +321,13 @@ export function PeriodosTab() {
                     min="0"
                     value={formData.despesa_servico_cobranca}
                     onChange={(e) => setFormData({ ...formData, despesa_servico_cobranca: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2.5 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                     placeholder="0.00"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
                     Despesas Extras (R$)
                   </label>
                   <input
@@ -336,17 +336,17 @@ export function PeriodosTab() {
                     min="0"
                     value={formData.despesa_extra_total}
                     onChange={(e) => setFormData({ ...formData, despesa_extra_total: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2.5 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                     placeholder="0.00"
                   />
                 </div>
               </div>
 
               {/* Total Calculado */}
-              <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <div className="mt-3 sm:mt-4 p-3 sm:p-4 bg-blue-50 border border-blue-200 rounded-lg">
                 <div className="flex justify-between items-center">
-                  <span className="font-semibold text-gray-800">Total de Despesas:</span>
-                  <span className="text-2xl font-bold text-blue-600">
+                  <span className="font-semibold text-sm sm:text-base text-gray-800">Total de Despesas:</span>
+                  <span className="text-xl sm:text-2xl font-bold text-blue-600">
                     R$ {(
                       (parseFloat(formData.despesa_energia) || 0) +
                       (parseFloat(formData.despesa_outros) || 0) +
@@ -355,23 +355,23 @@ export function PeriodosTab() {
                     ).toFixed(2)}
                   </span>
                 </div>
-                <p className="text-xs text-gray-600 mt-2">
+                <p className="text-[10px] sm:text-xs text-gray-600 mt-2">
                   Este valor será dividido pelo consumo total para calcular o valor do m³
                 </p>
               </div>
             </div>
 
-            <div className="flex justify-end space-x-3 pt-4 border-t">
+            <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3 pt-3 sm:pt-4 border-t">
               <button
                 type="button"
                 onClick={() => setShowForm(false)}
-                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                className="w-full sm:w-auto px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm sm:text-base"
               >
                 Cancelar
               </button>
               <button 
                 type="submit" 
-                className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold transition-colors"
+                className="w-full sm:w-auto px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold transition-colors text-sm sm:text-base"
               >
                 Criar Período
               </button>
@@ -380,69 +380,69 @@ export function PeriodosTab() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="bg-white rounded-lg shadow-sm p-4">
-          <h3 className="font-semibold text-gray-900 mb-4">Períodos</h3>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="bg-white rounded-lg shadow-sm p-3 sm:p-4">
+          <h3 className="font-semibold text-sm sm:text-base text-gray-900 mb-3 sm:mb-4">Períodos</h3>
           <div className="space-y-2">
             {periodos.map((periodo) => (
               <button
                 key={periodo.id}
                 onClick={() => setSelectedPeriodo(periodo.id)}
-                className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
+                className={`w-full text-left px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg transition-colors ${
                   selectedPeriodo === periodo.id
                     ? 'bg-blue-100 border-2 border-blue-600 text-blue-900'
                     : 'bg-gray-50 hover:bg-gray-100 border-2 border-transparent'
                 }`}
               >
-                <div className="font-medium">{meses[periodo.mes - 1]} {periodo.ano}</div>
-                <div className="text-sm text-gray-600">
+                <div className="font-medium text-sm sm:text-base">{meses[periodo.mes - 1]} {periodo.ano}</div>
+                <div className="text-xs sm:text-sm text-gray-600">
                   Total: R$ {periodo.valor_total.toFixed(2)}
                 </div>
               </button>
             ))}
             {periodos.length === 0 && (
-              <p className="text-gray-500 text-sm">Nenhum período cadastrado</p>
+              <p className="text-gray-500 text-xs sm:text-sm">Nenhum período cadastrado</p>
             )}
           </div>
         </div>
 
-        <div className="lg:col-span-2 bg-white rounded-lg shadow-sm p-6">
+        <div className="lg:col-span-2 bg-white rounded-lg shadow-sm p-4 sm:p-6">
           {selectedPeriodo ? (
             <>
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-lg font-semibold text-gray-900">Consumo dos Moradores</h3>
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 sm:mb-6 space-y-3 sm:space-y-0">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900">Consumo dos Moradores</h3>
                 <button
                   onClick={calcularValores}
-                  className="flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors"
+                  className="w-full sm:w-auto flex items-center justify-center space-x-2 bg-green-600 hover:bg-green-700 text-white px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm sm:text-base"
                 >
-                  <Calculator className="w-4 h-4" />
+                  <Calculator className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   <span>Calcular Valores</span>
                 </button>
               </div>
               <div className="space-y-3">
                 {moradores.map((morador) => (
-                  <div key={morador.id} className="flex items-center justify-between border-b pb-3">
+                  <div key={morador.id} className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b pb-3 space-y-2 sm:space-y-0">
                     <div className="flex-1">
-                      <div className="font-medium text-gray-900">Chácara {morador.numero_chacara}</div>
-                      <div className="text-sm text-gray-500">{morador.nome}</div>
+                      <div className="font-medium text-sm sm:text-base text-gray-900">Chácara {morador.numero_chacara}</div>
+                      <div className="text-xs sm:text-sm text-gray-500">{morador.nome}</div>
                     </div>
-                    <div className="flex items-center space-x-2">
+                    <div className="flex items-center space-x-2 w-full sm:w-auto">
                       <input
                         type="number"
                         step="0.01"
                         value={consumos[morador.id] || ''}
                         onChange={(e) => setConsumos({ ...consumos, [morador.id]: parseFloat(e.target.value) || 0 })}
                         placeholder="0.00"
-                        className="w-24 px-3 py-2 border border-gray-300 rounded-lg text-right focus:ring-2 focus:ring-blue-500"
+                        className="flex-1 sm:flex-initial w-full sm:w-24 px-3 py-2.5 text-base border border-gray-300 rounded-lg text-right focus:ring-2 focus:ring-blue-500"
                       />
-                      <span className="text-sm text-gray-600">m³</span>
+                      <span className="text-xs sm:text-sm text-gray-600">m³</span>
                     </div>
                   </div>
                 ))}
               </div>
             </>
           ) : (
-            <div className="text-center py-12 text-gray-500">
+            <div className="text-center py-12 text-sm sm:text-base text-gray-500">
               Selecione um período para gerenciar o consumo
             </div>
           )}
