@@ -100,33 +100,33 @@ export function PaymentModal({ consumo, morador, onClose }: PaymentModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto p-6 relative">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-3 sm:p-4 z-50">
+      <div className="bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto p-4 sm:p-6 relative">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 z-10"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 text-gray-400 hover:text-gray-600 z-10"
         >
-          <X className="w-6 h-6" />
+          <X className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
 
-        <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Pagamento via PIX</h2>
-          <p className="text-sm text-gray-600">
+        <div className="text-center mb-4 sm:mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Pagamento via PIX</h2>
+          <p className="text-xs sm:text-sm text-gray-600 break-words">
             Chácara {morador.numero_chacara} - {morador.nome}
           </p>
         </div>
 
         {/* Valor a Pagar */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-6 mb-6 text-white text-center">
-          <div className="text-sm font-medium mb-1 opacity-90">Valor a Pagar</div>
-          <div className="text-4xl font-bold mb-2">
+        <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-4 sm:p-6 mb-4 sm:mb-6 text-white text-center">
+          <div className="text-xs sm:text-sm font-medium mb-1 opacity-90">Valor a Pagar</div>
+          <div className="text-3xl sm:text-4xl font-bold mb-2">
             R$ {valorFormatado}
           </div>
-          <div className="text-sm opacity-90">
+          <div className="text-xs sm:text-sm opacity-90">
             {meses[consumo.periodo!.mes - 1]} {consumo.periodo!.ano}
           </div>
           {consumo.consumo_m3 > 0 && (
-            <div className="text-xs mt-2 opacity-80">
+            <div className="text-[10px] sm:text-xs mt-2 opacity-80">
               Consumo: {consumo.consumo_m3.toFixed(2)} m³
             </div>
           )}
@@ -134,16 +134,16 @@ export function PaymentModal({ consumo, morador, onClose }: PaymentModalProps) {
 
         {/* QR Code */}
         {showQRCode ? (
-          <div className="bg-white border-2 border-blue-200 rounded-xl p-6 mb-6 text-center">
-            <div className="bg-white p-4 rounded-lg inline-block mb-4">
-              <QRCodeSVG value={pixCopyPaste} size={200} level="H" />
+          <div className="bg-white border-2 border-blue-200 rounded-xl p-4 sm:p-6 mb-4 sm:mb-6 text-center">
+            <div className="bg-white p-3 sm:p-4 rounded-lg inline-block mb-3 sm:mb-4">
+              <QRCodeSVG value={pixCopyPaste} size={window.innerWidth < 640 ? 160 : 200} level="H" />
             </div>
-            <p className="text-sm text-gray-600 mb-4">
+            <p className="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4">
               Escaneie o QR Code com o app do seu banco
             </p>
             <button
               onClick={() => setShowQRCode(false)}
-              className="text-blue-600 hover:text-blue-700 text-sm font-medium"
+              className="text-blue-600 hover:text-blue-700 text-xs sm:text-sm font-medium"
             >
               Voltar para chave PIX
             </button>
@@ -151,8 +151,8 @@ export function PaymentModal({ consumo, morador, onClose }: PaymentModalProps) {
         ) : (
           <>
             {/* Chave PIX */}
-            <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+            <div className="mb-4 sm:mb-6">
+              <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
                 Chave PIX (Email)
               </label>
               <div className="flex items-center space-x-2 mb-3">
@@ -160,36 +160,36 @@ export function PaymentModal({ consumo, morador, onClose }: PaymentModalProps) {
                   type="text"
                   value={chavePix}
                   readOnly
-                  className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg bg-gray-50 text-gray-900 font-mono text-sm"
+                  className="flex-1 px-3 sm:px-4 py-2.5 sm:py-3 border-2 border-gray-300 rounded-lg bg-gray-50 text-gray-900 font-mono text-xs sm:text-sm break-all"
                 />
                 <button
                   onClick={handleCopy}
-                  className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-lg transition-colors"
+                  className="bg-blue-600 hover:bg-blue-700 text-white p-2.5 sm:p-3 rounded-lg transition-colors flex-shrink-0"
                   title="Copiar chave PIX"
                 >
-                  {copied ? <CheckCircle className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
+                  {copied ? <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" /> : <Copy className="w-4 h-4 sm:w-5 sm:h-5" />}
                 </button>
               </div>
               {copied && (
-                <p className="text-green-600 text-sm font-medium">✅ Chave PIX copiada!</p>
+                <p className="text-green-600 text-xs sm:text-sm font-medium">✅ Chave PIX copiada!</p>
               )}
               
               <button
                 onClick={() => setShowQRCode(true)}
-                className="w-full mt-3 flex items-center justify-center space-x-2 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-3 px-4 rounded-lg transition-colors"
+                className="w-full mt-3 flex items-center justify-center space-x-2 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-2.5 sm:py-3 px-4 rounded-lg transition-colors text-sm sm:text-base"
               >
-                <QrCode className="w-5 h-5" />
+                <QrCode className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span>Ver QR Code</span>
               </button>
             </div>
 
             {/* Instruções */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-              <h3 className="font-semibold text-blue-900 mb-3 flex items-center">
-                <span className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm mr-2">i</span>
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
+              <h3 className="font-semibold text-sm sm:text-base text-blue-900 mb-2 sm:mb-3 flex items-center">
+                <span className="w-5 h-5 sm:w-6 sm:h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs sm:text-sm mr-2 flex-shrink-0">i</span>
                 Como Pagar
               </h3>
-              <ol className="list-decimal list-inside space-y-2 text-sm text-blue-900">
+              <ol className="list-decimal list-inside space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-blue-900">
                 <li>Abra o app do seu banco</li>
                 <li>Escolha a opção <strong>PIX</strong></li>
                 <li>Cole a chave PIX ou escaneie o QR Code</li>
@@ -202,34 +202,34 @@ export function PaymentModal({ consumo, morador, onClose }: PaymentModalProps) {
         )}
 
         {/* Botões de Ação */}
-        <div className="space-y-3">
+        <div className="space-y-2 sm:space-y-3">
           <button
             onClick={() => setShowConfirm(true)}
             disabled={confirming}
-            className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+            className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 sm:py-4 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 text-sm sm:text-base"
           >
             {confirming ? (
               <>
-                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                 <span>Confirmando...</span>
               </>
             ) : (
               <>
-                <CheckCircle className="w-5 h-5" />
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span>Confirmar Pagamento</span>
               </>
             )}
           </button>
           <button
             onClick={onClose}
-            className="w-full border-2 border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold py-3 px-4 rounded-lg transition-colors"
+            className="w-full border-2 border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold py-2.5 sm:py-3 px-4 rounded-lg transition-colors text-sm sm:text-base"
           >
             Fechar
           </button>
         </div>
 
         {/* Aviso */}
-        <p className="text-xs text-gray-500 text-center mt-4">
+        <p className="text-[10px] sm:text-xs text-gray-500 text-center mt-3 sm:mt-4">
           ⚠️ Clique em "Confirmar Pagamento" apenas após realizar o pagamento
         </p>
 

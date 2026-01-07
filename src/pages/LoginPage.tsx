@@ -69,74 +69,74 @@ export function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-8">
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-full mb-4">
-            <Droplets className="w-8 h-8 text-white" />
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-3 sm:p-4">
+      <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-4 sm:p-8">
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-blue-600 rounded-full mb-3 sm:mb-4">
+            <Droplets className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-blue-900 mb-2">AMCRS</h1>
-          <p className="text-gray-600">Sistema de Pagamento de Água</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-blue-900 mb-2">AMCRS</h1>
+          <p className="text-sm sm:text-base text-gray-600">Sistema de Pagamento de Água</p>
         </div>
 
         {/* Tela de Confirmação do Morador */}
         {showConfirmMorador && moradorData ? (
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             <button
               onClick={handleBackToForm}
-              className="flex items-center text-blue-600 hover:text-blue-700 font-medium mb-4"
+              className="flex items-center text-blue-600 hover:text-blue-700 font-medium mb-2 sm:mb-4 text-sm sm:text-base"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Voltar
             </button>
 
-            <div className="text-center space-y-4">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-100 rounded-full mb-2">
-                <User className="w-10 h-10 text-blue-600" />
+            <div className="text-center space-y-3 sm:space-y-4">
+              <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-blue-100 rounded-full mb-2">
+                <User className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />
               </div>
               
-              <h2 className="text-2xl font-bold text-gray-900">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 px-2">
                 Confirme sua identidade
               </h2>
               
-              <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6 space-y-3">
+              <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4 sm:p-6 space-y-3">
                 <div>
-                  <p className="text-sm text-gray-600 mb-1">Você está acessando a área de:</p>
-                  <p className="text-2xl font-bold text-blue-900">{moradorData.nome}</p>
+                  <p className="text-xs sm:text-sm text-gray-600 mb-1">Você está acessando a área de:</p>
+                  <p className="text-lg sm:text-2xl font-bold text-blue-900 break-words">{moradorData.nome}</p>
                 </div>
                 <div className="pt-2 border-t border-blue-200">
-                  <p className="text-sm text-gray-600">Chácara nº</p>
-                  <p className="text-xl font-semibold text-blue-700">{moradorData.numero_chacara}</p>
+                  <p className="text-xs sm:text-sm text-gray-600">Chácara nº</p>
+                  <p className="text-lg sm:text-xl font-semibold text-blue-700">{moradorData.numero_chacara}</p>
                 </div>
                 {moradorData.telefone && (
                   <div className="pt-2 border-t border-blue-200">
-                    <p className="text-sm text-gray-600">Telefone</p>
-                    <p className="text-lg font-medium text-gray-700">{moradorData.telefone}</p>
+                    <p className="text-xs sm:text-sm text-gray-600">Telefone</p>
+                    <p className="text-base sm:text-lg font-medium text-gray-700">{moradorData.telefone}</p>
                   </div>
                 )}
               </div>
 
-              <div className="pt-4 space-y-2">
-                <p className="text-lg font-semibold text-gray-700">
+              <div className="pt-2 sm:pt-4 space-y-2">
+                <p className="text-base sm:text-lg font-semibold text-gray-700">
                   ✅ É você mesmo?
                 </p>
-                <p className="text-sm text-gray-500">
+                <p className="text-xs sm:text-sm text-gray-500 px-2">
                   Confirme para acessar seu painel
                 </p>
               </div>
             </div>
 
             {error && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+              <div className="bg-red-50 border border-red-200 text-red-700 px-3 sm:px-4 py-2 sm:py-3 rounded-lg text-xs sm:text-sm">
                 {error}
               </div>
             )}
 
-            <div className="space-y-3 pt-2">
+            <div className="space-y-2 sm:space-y-3 pt-2">
               <button
                 onClick={handleConfirmMorador}
                 disabled={loading}
-                className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-lg shadow-lg"
+                className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-base sm:text-lg shadow-lg"
               >
                 {loading ? 'Entrando...' : '✓ Sim, sou eu! Continuar'}
               </button>
@@ -144,7 +144,7 @@ export function LoginPage() {
               <button
                 onClick={handleBackToForm}
                 disabled={loading}
-                className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 px-6 rounded-lg transition-colors"
+                className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors text-sm sm:text-base"
               >
                 ✗ Não sou eu
               </button>
@@ -153,11 +153,11 @@ export function LoginPage() {
         ) : (
           <>
             {/* Formulário de Login Normal */}
-            <div className="flex mb-6 bg-gray-100 rounded-lg p-1">
+            <div className="flex mb-4 sm:mb-6 bg-gray-100 rounded-lg p-1">
               <button
                 type="button"
                 onClick={() => setIsAdmin(false)}
-                className={`flex-1 py-2 px-4 rounded-md font-medium transition-all ${
+                className={`flex-1 py-2 px-2 sm:px-4 rounded-md font-medium transition-all text-sm sm:text-base ${
                   !isAdmin
                     ? 'bg-white text-blue-600 shadow-sm'
                     : 'text-gray-600'
@@ -168,47 +168,47 @@ export function LoginPage() {
               <button
                 type="button"
                 onClick={() => setIsAdmin(true)}
-                className={`flex-1 py-2 px-4 rounded-md font-medium transition-all ${
+                className={`flex-1 py-2 px-2 sm:px-4 rounded-md font-medium transition-all text-sm sm:text-base ${
                   isAdmin
                     ? 'bg-white text-blue-600 shadow-sm'
                     : 'text-gray-600'
                 }`}
               >
-                Administrador
+                Admin
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
               {isAdmin ? (
                 <>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
                       Email
                     </label>
                     <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
                       required
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
                       Senha
                     </label>
                     <input
                       type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
                       required
                     />
                   </div>
                 </>
               ) : (
                 <div>
-                  <label className="block text-lg font-medium text-gray-700 mb-3">
+                  <label className="block text-base sm:text-lg font-medium text-gray-700 mb-2 sm:mb-3">
                     Número da Chácara
                   </label>
                   <input
@@ -216,17 +216,17 @@ export function LoginPage() {
                     value={numeroChacara}
                     onChange={(e) => setNumeroChacara(e.target.value)}
                     placeholder="Ex: 15"
-                    className="w-full px-6 py-4 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-2xl text-center font-semibold"
+                    className="w-full px-4 sm:px-6 py-3 sm:py-4 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-xl sm:text-2xl text-center font-semibold"
                     required
                   />
-                  <p className="text-sm text-gray-500 mt-2 text-center">
+                  <p className="text-xs sm:text-sm text-gray-500 mt-2 text-center">
                     Digite apenas o número da sua chácara
                   </p>
                 </div>
               )}
 
               {error && (
-                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+                <div className="bg-red-50 border border-red-200 text-red-700 px-3 sm:px-4 py-2 sm:py-3 rounded-lg text-xs sm:text-sm">
                   {error}
                 </div>
               )}
@@ -234,7 +234,7 @@ export function LoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-lg shadow-lg"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-base sm:text-lg shadow-lg"
               >
                 {loading ? 'Entrando...' : isAdmin ? 'Entrar' : '🔐 Entrar na Minha Conta'}
               </button>
